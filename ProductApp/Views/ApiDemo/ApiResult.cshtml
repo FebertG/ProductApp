@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "ApiResult";
+    // Pobranie typu zapytania (GET lub POST) z ViewBag w celu pokazania w nagłówku
+    string method = ViewBag.Method as string ?? "NIEZNANA";
+}
+
+<h1>Wyniki zapytania @method</h1>
+
+<pre>
+    @* Wyświetlenie odpowiedzi z API przekazanej przez ViewBag.Response *@
+    @ViewBag.Response
+</pre>
+
+<p>Wynik znajduje się również w konsoli</p>
+
+<a asp-action="Index" class="btn btn-secondary">Powrót</a>

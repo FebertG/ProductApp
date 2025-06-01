@@ -1,0 +1,52 @@
+﻿@model ProductApp.Models.Product
+
+@{
+    ViewData["Title"] = "Tworzenie nowego";
+}
+
+<h1>Tworzenie nowego produktu</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @* Formularz tworzenia nowego produktu (POST: Products/Create) *@
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                @* Pozwala na wpisanie dowolnego tekstu, dzięki czemu możemy w liczbach używać "," zamiast "." *@
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control", type = "text" })
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Powrót do listy</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>
+        // Nadpisanie metody walidacji liczby, by akceptować format z przecinkiem
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) || /^\d+(,\d{1,2})?$/.test(value);
+        };
+    </script>
+}
+

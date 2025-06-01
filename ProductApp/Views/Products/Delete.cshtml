@@ -1,0 +1,40 @@
+﻿@model ProductApp.Models.Product
+
+@{
+    ViewData["Title"] = "Usuwanie";
+}
+
+<h1>Usuwanie</h1>
+
+<h3>Czy na pewno chcesz usunąć ten produkt?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        @* Wyświetlenie szczegółów produktu, aby użytkownik mógł potwierdzić usunięcie *@
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+    
+    @* Formularz potwierdzenia usunięcia (POST: Products/Delete) *@
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Powrót do listy</a>
+    </form>
+</div>

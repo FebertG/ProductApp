@@ -1,0 +1,33 @@
+﻿@model ProductApp.Models.PostData
+
+@{
+    ViewData["Title"] = "Wysyłanie danych";
+}
+
+<h2>Wysyłanie danych do API</h2>
+
+@* Formularz wysyłający dane do akcji CreatePost (HTTP POST) w ApiDemoController *@
+<form asp-action="CreatePost" method="post">
+    <div class="form-group">
+        <label asp-for="UserId"></label>
+        <input asp-for="UserId" class="form-control" />
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Body"></label>
+        <textarea asp-for="Body" class="form-control"></textarea>
+        <span asp-validation-for="Body" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Wyślij</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
