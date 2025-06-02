@@ -94,14 +94,14 @@ W kontrolerze `ProductsController` znajdują się metody:
 
 W kontrolerze `ApiDemoController` wdrożono pobieranie i wysyłanie danych do API:
 
-### 1. `GET /ApiDemo/GetPost`
+### `GET /ApiDemo/GetPost`
 - Wysyła zapytanie GET do `https://jsonplaceholder.typicode.com/posts/1`.
 - Po otrzymaniu odpowiedzi (JSON) wypisuje ją w konsoli i przekazuje tekst do widoku `ApiResult`.
 
-### 2. `GET /ApiDemo/CreatePost`
+### `GET /ApiDemo/CreatePost`
 - Zwraca widok z formularzem, w którym użytkownik może wprowadzić `UserId`, `Title` i `Body`.
 
-### 3. `POST /ApiDemo/CreatePost`
+### `POST /ApiDemo/CreatePost`
 - Odbiera z formularza obiekt `PostData`.
 - Serializuje go do JSON i wysyła do `https://jsonplaceholder.typicode.com/posts` metodą POST.
 - Po otrzymaniu odpowiedzi JSON wypisuje wynik w konsoli i przekazuje tekst do widoku `ApiResult`.
