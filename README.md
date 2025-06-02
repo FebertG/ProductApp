@@ -1,4 +1,3 @@
-# ProductApp
 # 📦 ProductApp
 
 **ProductApp** to aplikacja webowa napisana w technologii **ASP.NET Core MVC**, która umożliwia:
